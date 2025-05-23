@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Herramienta Financiera</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="login">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Usuario" required>
+                <input type="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Ingresar</button>
+            </form>
+        </div>
+
+        <div id="dashboard" style="display: none;">
+            <h2>Bienvenido, <span id="user"></span></h2>
+            <nav>
+                <button onclick="mostrarSeccion('tarjetas')">Mis Tarjetas</button>
+                <button onclick="mostrarSeccion('simulador')">Simulador de Gastos</button>
+                <button onclick="mostrarSeccion('agregar')">Agregar Tarjeta</button>
+            </nav>
+
+            <section id="tarjetas" class="seccion">
+                <h3>Mis Tarjetas</h3>
+                <div id="tarjetasContainer"></div>
+                <p>Total de deuda general: $<span id="totalDeuda">0.00</span></p>
+            </section>
+
+            <section id="simulador" class="seccion" style="display: none;">
+                <h3>Simulador de Gastos</h3>
+                <input type="number" id="monto" placeholder="Monto del gasto">
+                <input type="number" id="meses" placeholder="Cantidad de meses">
+                <input type="number" id="interes" placeholder="Interés (%)">
+                <button onclick="simularGasto()">Simular</button>
+                <p id="resultadoSimulacion"></p>
+            </section>
+
+            <section id="agregar" class="seccion" style="display: none;">
+                <h3>Agregar Tarjeta</h3>
+                <form id="formAgregarTarjeta">
+                    <input type="text" id="numeroTarjeta" placeholder="Número de tarjeta" required>
+                    <input type="date" id="fechaCorte" required>
+                    <input type="date" id="fechaPago" required>
+                    <input type="number" id="cantidadDebe" placeholder="Cantidad que debe" required>
+                    <button type="submit">Agregar</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
